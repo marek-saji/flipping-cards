@@ -1,0 +1,24 @@
+{
+  "name": "flipping-cards",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marek-saji/flipping-cards.git"
+  },
+  "keywords": [
+    "language",
+    "learning",
+    "memory"
+  ],
+  "author": "Marek ‘saji’ Augustynowicz <marek.aug@gmail.com> (https://twitter.com/saji_)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marek-saji/flipping-cards/issues"
+  },
+  "homepage": "https://github.com/marek-saji/flipping-cards#readme"
+}
