@@ -74,6 +74,12 @@ th small
     perspective: 50em;
 }
 
+.item-language
+{
+    outline-color: highlight;
+    outline-color: -webkit-focus-ring-color;
+}
+
 .item-language[lang=jp],
 .item-language:not([lang=jp])
 {
@@ -88,7 +94,7 @@ th small
     border: #eee solid thin;
     box-shadow: 0.05rem 0.05rem 0.1rem #666;
     backface-visibility: hidden;
-    transition: all 0.75s ease-in-out;
+    transition: transform 0.75s ease-in-out;
 }
 
 .item-language[lang=jp]
@@ -101,15 +107,29 @@ th small
     background-color: #eee;
 }
 
-.item:hover
+.item:hover,
+.item:focus
 {
     z-index: 1;
+    outline: none;
 }
-.item:hover .item-language[lang=jp]
+.item:hover .item-language[lang=jp],
+.item:focus .item-language[lang=jp]
 {
     transform: rotateX(0deg) rotateY(180deg);
 }
-.item:hover .item-language:not([lang=jp])
+.item:hover .item-language:not([lang=jp]),
+.item:focus .item-language:not([lang=jp])
 {
     transform: rotateX(5deg) rotateY(340deg);
+}
+.item:focus .item-language:not([lang=jp])
+{
+    outline-style: solid;
+    outline-width: 3px;
+    outline: 5px solid Highlight;
+}
+@supports (outline-color: -webkit-focus-ring)
+{
+    outline-width: 5px;
 }
