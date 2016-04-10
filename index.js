@@ -118,7 +118,27 @@
             context.fillText('😃', 32, 32);
             data2 = context.getImageData(32, 32, 16, 16).data;
             
-            return data1.join('') !== data2.join('');
+            return stringifyImageData(data1) !== stringifyImageData(data2);
+        }
+    }
+    
+    
+    /**
+     * Stringify image data
+     *
+     * Can't just call ImageData.join(), because Safair does not support it
+     *
+     * @param {ImageData}
+     */
+    function stringifyImageData (data)
+    {
+        if ('function' === typeof data.join)
+        {
+            return data.join('');
+        }
+        else
+        {
+            return Array.prototype.join.call(data, '');
         }
     }
     
