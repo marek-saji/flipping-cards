@@ -160,14 +160,23 @@ th small
 .fcard__card--onscreen
 {
     transform: translateX(-50%) translateY(-50%);
+    z-index: 2; 
 }
 .fcard__card--wrong
 {
-    transform: translateX(calc( -105vw - 100% )) translateY(-50%);
+    transform: translateX(calc( -55vw - 100% )) translateY(-50%);
 }
 .fcard__card--correct
 {
-    transform: translateX(calc( 105vw + 100%)) translateY(-50%);
+    transform: translateX(calc( 55vw )) translateY(-50%);
+}
+.debug .fcard__card--wrong
+{
+    transform: translateX(calc( -25vw - 100% )) translateY(-50%);
+}
+.debug .fcard__card--correct
+{
+    transform: translateX(calc( 25vw )) translateY(-50%);
 }
 
 .fcard__card__question,

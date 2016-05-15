@@ -301,6 +301,7 @@
     
     if (debug())
     {
+        document.documentElement.className += ' debug';
         global.onerror = function (error) {
             alert(error);
         };
