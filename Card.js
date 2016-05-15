@@ -247,9 +247,15 @@
      * Show question side of the card
      */
     FlippingCard.prototype.showQuestion = function () {
+        var wrapper = this.questionCard.parentElement.parentElement;
+        var wrapperScrollLeft = wrapper.scrollLeft;
+        
         this.questionCard.classList.remove('fcard__card__question--flipped');
         this.answerCard.classList.add('fcard__card__answer--flipped');
         this.questionCard.focus();
+        
+        // Restore scroll position that may have been changed with focus
+        wrapper.scrollLeft = wrapperScrollLeft;
     };
 
     
