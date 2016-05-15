@@ -299,6 +299,13 @@
         }
     }
     
+    if (debug())
+    {
+        global.onerror = function (error) {
+            alert(error);
+        };
+    }
+    
     
     if (isCoolEnough())
     {
