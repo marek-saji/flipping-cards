@@ -49,22 +49,23 @@
         {
             missingFeatures.push('window.CSS');
         }
-        
-        if ('function' !== typeof global.CSS.supports)
+        else if ('function' !== typeof global.CSS.supports)
         {
             missingFeatures.push('window.CSS.supports');
         }
-        
-        if (! global.CSS.supports('width', 'calc(1em)'))
+        else
         {
-            missingFeatures.push('CSS: calc');
+            if (! global.CSS.supports('width', 'calc(1em)'))
+            {
+                missingFeatures.push('CSS: calc');
+            }
+
+            if (! global.CSS.supports('width', '1vw'))
+            {
+                missingFeatures.push('CSS: vw unit');
+            }
         }
-        
-        if (! global.CSS.supports('width', '1vw'))
-        {
-            missingFeatures.push('CSS: vw unit');
-        }
-        
+
         if ('function' !== typeof element.addEventListener)
         {
             missingFeatures.push('element.addEventListener');
