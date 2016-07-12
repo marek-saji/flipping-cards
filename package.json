@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/marek-saji/flipping-cards#readme",
   "browser-sync": {
-      "files": ["**/*.js", "**/*.html"],
+      "files": ["**/*.js", "**/*.html", "**/*.css"],
       "server": true
   }
 }
