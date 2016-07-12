@@ -18,6 +18,7 @@ body
 {
     display: inline-block;
     text-align: left;
+    line-height: 1.5;
 }
 body[data-fcard-active]
 {
@@ -40,6 +41,7 @@ h2
 
 table
 {
+    margin: 0 auto;
     font-size: 1em;
     max-width: 100%;
     text-align: center;
@@ -61,12 +63,19 @@ th small
 
 /*** Hiragana and Katakana tables ***/
 
+.kana .kana__syllabogram
+{
+    margin-bottom: 1em;
+}
+
 .kana__syllabogram
 {
     text-align: center;
+    margin: 0;
     padding: 0 0.5em;
     font-size: 2em;
 }
+
 
 .kana__syllabogram > dt,
 .kana__syllabogram > dd
@@ -93,6 +102,7 @@ th small
     top: 0;
     right: 0;
     padding: 1em;
+    margin: 1em;
 }
 
 
@@ -168,11 +178,11 @@ th small
 }
 .fcard__card--wrong
 {
-    transform: translateX(calc( -55vw - 100% )) translateY(-50%);
+    transform: translateX(calc( -50vw - 40% - 100% )) translateY(-50%);
 }
 .fcard__card--correct
 {
-    transform: translateX(calc( 55vw )) translateY(-50%);
+    transform: translateX(calc( 50vw + 40% )) translateY(-50%);
 }
 .debug .fcard__card--wrong
 {
@@ -187,7 +197,6 @@ th small
 .fcard__card__answer
 {
     margin: 1em;
-    
     display: flex;
     flex-direction: column;
     align-content: stretch;
@@ -225,10 +234,13 @@ th small
 .fcard__card__content
 {
     display: flex;
+    flex-direction: column;
     align-content: center;
     align-items: center;
     justify-content: space-around;
     flex: 1 1 auto;
+    padding: 1em;
+    overflow: auto;
     font-size: 1.5em;
 }
 .fcard__card__content--short
