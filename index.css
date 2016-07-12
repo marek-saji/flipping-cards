@@ -256,7 +256,7 @@ th small
     flex-direction: column;
     align-content: center;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex: 1 1 auto;
     padding: 1em;
     overflow: auto;
@@ -272,6 +272,19 @@ th small
     align-items: flex-start;
     text-align: left;
     text-align: initial;
+}
+
+.fcard__card__disambiguation
+{
+    color: #666;
+}
+.fcard__card__disambiguation::before
+{
+    content: '(';
+}
+.fcard__card__disambiguation::after
+{
+    content: ')';
 }
 
 .fcard__card__nav

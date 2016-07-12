@@ -52,6 +52,8 @@
      */
     function setElementContent (element, content)
     {
+        var disambiguation;
+
         if (! element instanceof Element)
         {
             throw new TypeError('element must be a DOM Element');
@@ -60,6 +62,14 @@
         if (content instanceof Element)
         {
             element.innerHTML = content.outerHTML;
+            if (content.dataset.fcardDisambiguation)
+            {
+                disambiguation = document.createElement('small');
+                disambiguation.classList.add('fcard__card__disambiguation');
+                disambiguation.textContent = content.dataset.fcardDisambiguation;
+                element.appendChild(document.createTextNode(' '));
+                element.appendChild(disambiguation);
+            }
         }
         else
         {

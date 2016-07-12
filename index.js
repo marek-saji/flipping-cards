@@ -189,7 +189,7 @@
                 item.languageCodes.push(lang);
                 item.languages[lang] = [];
             }
-            item.languages[lang].push(textElement.innerHTML);
+            item.languages[lang].push(textElement);
         }
 
         return item;
