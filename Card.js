@@ -63,7 +63,7 @@
         }
         else
         {
-            element.textContent = content;
+            element.innerHTML = content;
         }
         
     };
