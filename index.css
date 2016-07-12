@@ -63,6 +63,15 @@ th small
 
 /*** Hiragana and Katakana tables ***/
 
+.kana
+{
+    font-size: 2em;
+}
+.kana th
+{
+    font-size: 0.5em;
+}
+
 .kana .kana__syllabogram
 {
     margin-bottom: 1em;
@@ -73,16 +82,14 @@ th small
     text-align: center;
     margin: 0;
     padding: 0 0.5em;
-    font-size: 2em;
 }
 
 
-.kana__syllabogram > dt,
-.kana__syllabogram > dd
+.kana__romaji
 {
     margin: 0;
-    padding: 0;
 }
+
 
 .kana__syllabogram [lang=jp-Kana]
 {
@@ -257,8 +264,8 @@ th small
 }
 .fcard__card__content--short
 {
-    font-size: 2.5em;
-    padding: 0.6em; /* 1.5 / 2.5 */
+    font-size: 4em;
+    padding: 0.375em; /* 1.5 / 4 */
 }
 .fcard__card__content--long
 {
