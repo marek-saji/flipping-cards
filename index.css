@@ -42,6 +42,45 @@ rt
 
 
 
+html[data-furigana=kana-only] .kanji
+{
+    display: none;
+}
+
+html[data-furigana=kana-only] .kanji ~ rt
+{
+    display: inline;
+    font-size: 1em;
+}
+
+html[data-furigana=kanji-only] .kanji ~ rt
+{
+    display: none;
+}
+
+
+
+summary > h1:only-child
+{
+    display: inline;
+}
+
+
+/*** Table of Contents ***/
+
+.toc__wrapper
+{
+    text-align: center;
+}
+
+.toc__inner
+{
+    display: inline-block;
+    text-align: left;
+    text-align: start;
+}
+
+
 /*** Sections ***/
 
 header,
@@ -115,6 +154,97 @@ th small
 }
 
 .kana__syllabogram [lang=jp-Latn]
+{
+    color: #666;
+}
+
+
+/*** Words ***/
+
+.words
+{
+    margin: 0;
+    padding: 0;
+}
+
+.words > li
+{
+    display: block;
+    margin-bottom: 1.5em;
+}
+
+
+.word > dd
+{
+    color: #666;
+}
+
+@media (min-width: 40em)
+{
+    @supports (flex-wrap: wrap)
+    {
+        .word
+        {
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .word > dt,
+        .word > dd
+        {
+            margin: 0;
+            padding: 0;
+            flex: 1 1 auto;
+        }
+
+        .word > dt
+        {
+            flex-basis: 30%;
+        }
+
+        .word > dd
+        {
+            flex-basis: 70%;
+        }
+    }
+}
+
+.fcard__card .word
+{
+    display: block;
+    text-align: center;
+}
+
+
+/*** Sentences ***/
+
+.sentences
+{
+    margin: 1.5em 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sentences > li
+{
+    margin-bottom: 3em;
+}
+
+.sentences > li:last-child
+{
+    margin-bottom: 0;
+}
+
+.sentence,
+.sentence > dt,
+.sentence > dd
+{
+    margin: 0;
+    padding: 0;
+}
+
+.sentence > dd
 {
     color: #666;
 }
