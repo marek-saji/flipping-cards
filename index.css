@@ -180,10 +180,11 @@ th small
 .fcard__card--wrong,
 .fcard__card--correct
 {
-    transition: all 1s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 .fcard__card--onscreen
 {
+    transition-delay: 0.3s;
     transform: translateX(-50%) translateY(-50%);
     z-index: 2;
 }
