@@ -251,8 +251,17 @@
         endPracticeButton.classList.add('fcard__endPractice');
         endPracticeButton.addEventListener('click', endPractice);
         backdrop.appendChild(endPracticeButton);
-        
-        document.getElementsByTagName('body')[0].appendChild(backdrop);
+
+        backdrop.addEventListener('click', function (event) {
+            if (backdrop === event.target)
+            {
+                endPracticeButton.classList.remove('fcard__endPractice--attention');
+                endPracticeButton.offsetHeight;
+                endPracticeButton.classList.add('fcard__endPractice--attention');
+            }
+        });
+
+        document.body.appendChild(backdrop);
     }
     
     
