@@ -27,7 +27,7 @@
         {
             throw new TypeError('contaier must be a DOM Element');
         }
-        
+
         if (
             ! itemGenerator instanceof Object ||
             ! itemGenerator.next instanceof Function
@@ -35,14 +35,14 @@
         {
             throw new TypeError('itemGenerator must be a generator');
         }
-        
-        
+
+
         this.setItemGenerator = itemGenerator;
         this.prepareDom(container);
         this.setupFresh();
     }
-    
-    
+
+
     /**
      * Set content to a DOM Element
      *
@@ -56,7 +56,7 @@
         {
             throw new TypeError('element must be a DOM Element');
         }
-    
+
         if (content instanceof Element)
         {
             element.innerHTML = content.outerHTML;
@@ -65,10 +65,10 @@
         {
             element.innerHTML = content;
         }
-        
+
     };
-    
-    
+
+
     /**
      * Create DOM elements and put them in the container
      *
@@ -77,7 +77,7 @@
      * @param {Element} container
      */
     FlippingCard.prototype.prepareDom = function (container) {
-        
+
         if (! container instanceof Element)
         {
             throw new TypeError('contaier must be a DOM Element');
@@ -85,7 +85,7 @@
 
         var questionNav, answerNav;
         var revealAnswer, gotItWrong, gotItCorrect;
-        
+
         this.question = document.createElement('section');
         this.answer = document.createElement('section');
         this.cards = document.createElement('dl');
@@ -96,10 +96,10 @@
         revealAnswer = document.createElement('button');
         gotItWrong = document.createElement('button');
         gotItCorrect = document.createElement('button');
-        
-        
+
+
         // attributes
-        
+
         this.question.classList.add('fcard__card__content');
         questionNav.classList.add('fcard__card__nav');
         this.answer.classList.add('fcard__card__content');
@@ -110,23 +110,23 @@
 
         this.questionCard.classList.add('fcard__card__question');
         this.questionCard.setAttribute('tabindex', 1);
-        
+
         this.answerCard.classList.add('fcard__card__answer', 'fcard__card__answer--flipped');
         this.answerCard.setAttribute('tabindex', 1);
-        
+
         revealAnswer.setAttribute('type', 'button');
         gotItWrong.setAttribute('type', 'button');
         gotItCorrect.setAttribute('type', 'button');
-        
+
         revealAnswer.textContent = '↷ show answer';
         gotItWrong.textContent = '😞 got it wrong';
         gotItCorrect.textContent = '😃 got it correct';
-        
-        
-        
-        
+
+
+
+
         // events
-        
+
         revealAnswer.addEventListener('click', this.showAnswer.bind(this));
         gotItWrong.addEventListener('click', this.wrongAnswer.bind(this));
         gotItCorrect.addEventListener('click', this.correctAnswer.bind(this));
@@ -134,25 +134,25 @@
         this.questionCard.addEventListener('keydown', this.questionKeydownHandler.bind(this));
         this.answerCard.addEventListener('keydown', this.answerKeydownHandler.bind(this));
 
-        
+
         // put together
-        
+
         questionNav.appendChild(revealAnswer);
         answerNav.appendChild(gotItWrong);
         answerNav.appendChild(gotItCorrect);
-        
+
         this.questionCard.appendChild(this.question);
         this.questionCard.appendChild(questionNav);
-        
+
         this.answerCard.appendChild(this.answer);
         this.answerCard.appendChild(answerNav);
-        
+
         this.cards.appendChild(this.questionCard);
         this.cards.appendChild(this.answerCard);
         container.appendChild(this.cards);
     };
-    
-    
+
+
     /**
      * Setup card using item generator
      */
@@ -162,7 +162,7 @@
         this.setAnswer(questionAndAnswer.answer);
     };
 
-    
+
     /**
      * Set question content
      *
@@ -180,8 +180,8 @@
             this.question.textContent.length > CONTENT_LENGTH_LONG
         );
     };
-    
-    
+
+
     /**
      * Set answre content
      *
@@ -199,8 +199,8 @@
             this.answer.textContent.length > CONTENT_LENGTH_LONG
         );
     };
-    
-    
+
+
     /**
      * Enable or disable all buttons in the card
      *
@@ -214,24 +214,24 @@
             }
         );
     };
-    
-    
+
+
     /**
      * Enable all buttons in the card
      */
     FlippingCard.prototype.enableButtons = function () {
         this.toggleButtonsState(true);
     };
-    
-    
+
+
     /**
      * Disable all buttons in the card
      */
     FlippingCard.prototype.disableButtons = function () {
         this.toggleButtonsState(false);
     };
-    
-    
+
+
     /**
      * Make card disappear
      */
@@ -239,8 +239,8 @@
         this.cards.classList.remove('fcard__card--onscreen');
         this.disableButtons();
     };
-    
-    
+
+
     /**
      * Make card disappear after wrong answer
      */
@@ -248,8 +248,8 @@
         this.cards.classList.add('fcard__card--wrong');
         this.disappear();
     };
-    
-    
+
+
     /**
      * Make card disappear after correct answer
      */
@@ -258,7 +258,7 @@
         this.disappear();
     };
 
-    
+
     /**
      * Make card appear
      */
@@ -271,23 +271,23 @@
         this.enableButtons();
     };
 
-    
+
     /**
      * Show question side of the card
      */
     FlippingCard.prototype.showQuestion = function () {
         var wrapper = this.questionCard.parentElement.parentElement;
         var wrapperScrollLeft = wrapper.scrollLeft;
-        
+
         this.questionCard.classList.remove('fcard__card__question--flipped');
         this.answerCard.classList.add('fcard__card__answer--flipped');
         this.questionCard.focus();
-        
+
         // Restore scroll position that may have been changed with focus
         wrapper.scrollLeft = wrapperScrollLeft;
     };
 
-    
+
     /**
      * Show answer side of the card
      */
@@ -296,8 +296,8 @@
         this.answerCard.classList.remove('fcard__card__answer--flipped');
         this.answerCard.focus();
     };
-    
-    
+
+
     /**
      * React to incorrect answer
      */
@@ -305,8 +305,8 @@
         this.disappearWrong();
         this.onWrongAnswer();
     };
-    
-    
+
+
     /**
      * React to correct answer
      */
@@ -314,8 +314,8 @@
         this.disappearCorrect();
         this.onCorrectAnswer();
     };
-    
-    
+
+
     /**
      * Handle keydown event on question card
      */
@@ -326,8 +326,8 @@
             event.preventDefault();
         }
     };
-    
-    
+
+
     /**
      * Handle keydown event on answer card
      */
@@ -344,7 +344,7 @@
         }
     };
 
-    
+
     // Export
     global.FlippingCard = FlippingCard;
 

@@ -120,7 +120,7 @@ th small
 
     transform-origin: 50%;
     overflow: hidden;
-    
+
     background: rgba(0,0,0,0.75);
 }
 
@@ -184,7 +184,7 @@ th small
 .fcard__card--onscreen
 {
     transform: translateX(-50%) translateY(-50%);
-    z-index: 2; 
+    z-index: 2;
 }
 .fcard__card--wrong
 {
@@ -212,14 +212,14 @@ th small
     align-content: stretch;
     align-items: stretch;
     overflow: auto;
-    
+
     background: white;
     border: #eee solid thin;
     box-shadow: 0.25rem 0.25rem 0.5rem #666;
     transition: all 0.6s ease-in-out;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    
+
     text-align: center;
 }
 

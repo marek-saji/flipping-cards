@@ -1,9 +1,9 @@
 (function (global, document, Math) {
 
     'use strict';
-    
+
     var backdrop;
-    
+
     /**
      * Check whether debug is enabled
      *
@@ -24,27 +24,27 @@
     {
         var missingFeatures = [];
         var element = document.createElement('i');
-        
+
         if ('function' !== typeof document.querySelector)
         {
             missingFeatures.push('document.querySelector');
         }
-        
+
         if ('function' !== typeof document.querySelectorAll)
         {
             missingFeatures.push('document.querySelectorAll');
         }
-        
+
         if ('function' !== typeof Array.prototype.keys)
         {
             missingFeatures.push('Array.prototype.keys');
         }
-        
+
         if ('function' !== typeof Array.prototype.forEach)
         {
             missingFeatures.push('Array.prototype.forEach');
         }
-        
+
         if ( !global.CSS)
         {
             missingFeatures.push('window.CSS');
@@ -70,12 +70,12 @@
         {
             missingFeatures.push('element.addEventListener');
         }
-        
+
         if (undefined === element.classList)
         {
             missingFeatures.push('element.classList');
         }
-        
+
         if (! supportsEmoji())
         {
             missingFeatures.push('emoji font');
@@ -85,11 +85,11 @@
         {
             alert("Not enhancing, missing features:\n" + missingFeatures.join("\n"));
         }
-        
+
         return 0 === missingFeatures.length;
     }
-    
-    
+
+
     /**
      * Detect emoji support by checking whether
      * two different emojis are rendered the same
@@ -98,9 +98,9 @@
     {
         var canvas, context;
         var data1, data2;
-        
+
         canvas = document.createElement('canvas');
-        
+
         if (
             ! canvas.getContext ||
             ! canvas.getContext('2d') ||
@@ -118,12 +118,12 @@
             data1 = context.getImageData(0, 0, 16, 16).data;
             context.fillText('😃', 32, 32);
             data2 = context.getImageData(32, 32, 16, 16).data;
-            
+
             return stringifyImageData(data1) !== stringifyImageData(data2);
         }
     }
-    
-    
+
+
     /**
      * Stringify image data
      *
@@ -142,8 +142,8 @@
             return Array.prototype.join.call(data, '');
         }
     }
-    
-    
+
+
     /**
      * Put “Start practice” button on page
      */
@@ -154,16 +154,16 @@
         startPracticeButton.setAttribute('type', 'button');
         startPracticeButton.classList.add('fcard__startPractise');
         startPracticeButton.textContent = 'Start practice';
-        
+
         startPracticeButton.addEventListener(
             'click',
             startPractice
         );
-        
+
         document.querySelector('[data-fcard-place-for-start-practice-button]').appendChild(startPracticeButton);
     }
-    
-    
+
+
     /**
      * Create an item from DOM Element
      *
@@ -191,11 +191,11 @@
             }
             item.languages[lang].push(textElement.innerHTML);
         }
-        
+
         return item;
     }
-    
-    
+
+
     /**
      * Collect all items from the page
      */
@@ -204,8 +204,8 @@
         var elements = document.querySelectorAll('[data-fcard-item]');
         return Array.prototype.map.call(elements, createItemFromElement);
     }
-    
-    
+
+
     /**
      * Get random element from an array
      *
@@ -216,7 +216,7 @@
     {
         return array[ Math.floor(Math.random() * array.length) ];
     }
-    
+
     function createItemGenerator (items) {
         return {next: function () {
             var item = randomElement(items);
@@ -227,15 +227,15 @@
             }};
         }};
     };
-    
-    
+
+
     /**
      * Show backdrop
      */
     function activateBackdrop ()
     {
         var endPracticeButton;
-        
+
         backdrop = document.createElement('section');
         backdrop.classList.add('fcard__card__wrapper');
         backdrop.addEventListener('keydown', function (event) {
@@ -263,8 +263,8 @@
 
         document.body.appendChild(backdrop);
     }
-    
-    
+
+
     /**
      * Start practice session
      */
@@ -275,12 +275,12 @@
         var question;
         var cards = new Array(2);
         var activeCardIdx;
-        
+
         if (undefined === backdrop)
         {
             activateBackdrop();
         }
-        
+
         for (activeCardIdx=0; activeCardIdx<cards.length; activeCardIdx += 1)
         {
             cards[activeCardIdx] = new FlippingCard(backdrop, itemGenerator);
@@ -296,8 +296,8 @@
         activeCardIdx = 0;
         cards[activeCardIdx].appear();
     }
-    
-    
+
+
     /**
      * End practice
      */
@@ -310,7 +310,7 @@
             document.body.removeAttribute('data-fcard-active');
         }
     }
-    
+
     if (debug())
     {
         document.documentElement.className += ' debug';
@@ -318,8 +318,8 @@
             alert(error);
         };
     }
-    
-    
+
+
     if (isCoolEnough())
     {
         addStartPracticeButton();
