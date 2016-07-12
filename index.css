@@ -19,6 +19,10 @@ body
     display: inline-block;
     text-align: left;
 }
+body[data-fcard-active]
+{
+    overflow: hidden;
+}
 
 
 

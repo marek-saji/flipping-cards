@@ -244,7 +244,8 @@
                 endPractice();
             }
         });
-        
+        document.body.setAttribute('data-fcard-active', true);
+
         endPracticeButton = document.createElement('button');
         endPracticeButton.textContent = '❌';
         endPracticeButton.classList.add('fcard__endPractice');
@@ -297,6 +298,7 @@
         {
             backdrop.remove();
             backdrop = undefined;
+            document.body.removeAttribute('data-fcard-active');
         }
     }
     
