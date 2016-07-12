@@ -2,7 +2,18 @@
 
     'use strict';
 
-    
+
+    /**
+     * Length above which content is considered short
+     */
+    var CONTENT_LENGTH_SHORT = 7;
+    /**
+     * Length above which content is considered long
+     */
+    var CONTENT_LENGTH_LONG = 100;
+
+
+
     /**
      * Create a new flippin’ card
      *
@@ -158,7 +169,16 @@
      * @param {Element|string} question
      */
     FlippingCard.prototype.setQuestion = function (question) {
+        this.question.scrollTop = 0;
         setElementContent(this.question, question);
+        this.question.classList.toggle(
+            'fcard__card__content--short',
+            this.question.textContent.length < CONTENT_LENGTH_SHORT
+        );
+        this.question.classList.toggle(
+            'fcard__card__content--long',
+            this.question.textContent.length > CONTENT_LENGTH_LONG
+        );
     };
     
     
@@ -168,7 +188,16 @@
      * @param {Element|string} answer
      */
     FlippingCard.prototype.setAnswer = function (answer) {
+        this.question.scrollTop = 0;
         setElementContent(this.answer, answer);
+        this.answer.classList.toggle(
+            'fcard__card__content--short',
+            this.answer.textContent.length < CONTENT_LENGTH_LONG
+        );
+        this.answer.classList.toggle(
+            'fcard__card__content--long',
+            this.answer.textContent.length > CONTENT_LENGTH_LONG
+        );
     };
     
     

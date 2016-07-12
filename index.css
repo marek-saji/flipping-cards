@@ -227,6 +227,16 @@ th small
     flex: 1 1 auto;
     font-size: 1.5em;
 }
+.fcard__card__content--short
+{
+    font-size: 2.5em;
+}
+.fcard__card__content--long
+{
+    align-items: flex-start;
+    text-align: left;
+    text-align: initial;
+}
 
 .fcard__card__nav
 {
