@@ -1,0 +1,17 @@
+#!/bin/sh
+
+CODE=0
+for FILE in $( git diff --cached --name-only -- *.js )
+do
+    git show ":${FILE}" \
+        | ./node_modules/.bin/eslint \
+            --stdin \
+            --stdin-filename "${FILE}"
+    THIS_CODE=$?
+    if [ ${THIS_CODE} != 0 ]
+    then
+        CODE="${THIS_CODE}"
+    fi
+done
+
+exit "${CODE}"

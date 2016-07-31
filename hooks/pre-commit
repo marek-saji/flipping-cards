@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# Run all pre-commit* scripts and fail if any failes.
+
+set -e
+
+CODE=0
+for HOOK in "$0"?*
+do
+    if [ "${HOOK}" != "$0" ] && [ -x "${HOOK}" ]
+    then
+        "${HOOK}" "$@"
+        THIS_CODE=$?
+        if [ "${THIS_CODE}" != 0 ]
+        then
+            CODE="${THIS_CODE}"
+        fi
+    fi
+done
+
+exit "${CODE}"
