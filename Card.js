@@ -1,4 +1,4 @@
-(function (global, document, undefined) {
+(function (global, document) {
 
     'use strict';
 
@@ -76,7 +76,7 @@
             element.innerHTML = content;
         }
 
-    };
+    }
 
 
     /**

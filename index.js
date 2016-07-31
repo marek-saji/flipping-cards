@@ -78,7 +78,7 @@
 
         if (missingFeatures.length && debug())
         {
-            alert("Not enhancing, missing features:\n" + missingFeatures.join("\n"));
+            alert('Not enhancing, missing features:\n' + missingFeatures.join('\n'));
         }
 
         return 0 === missingFeatures.length;
@@ -221,7 +221,7 @@
                 answer: item.element
             }};
         }};
-    };
+    }
 
 
     /**
@@ -267,7 +267,6 @@
     {
         var items = collectItems();
         var itemGenerator = createItemGenerator(items);
-        var question;
         var cards = new Array(2);
         var activeCardIdx;
 
@@ -281,7 +280,6 @@
             cards[activeCardIdx] = new FlippingCard(backdrop, itemGenerator);
             cards[activeCardIdx].onWrongAnswer = cards[activeCardIdx].onCorrectAnswer = function () {
                 var activeCard;
-                var prevCard = cards[activeCardIdx];
                 activeCardIdx = ( activeCardIdx + 1 ) % cards.length;
                 activeCard = cards[ activeCardIdx ];
                 activeCard.setupFresh();
