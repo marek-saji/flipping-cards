@@ -35,11 +35,6 @@
             missingFeatures.push('document.querySelectorAll');
         }
 
-        if ('function' !== typeof Array.prototype.keys)
-        {
-            missingFeatures.push('Array.prototype.keys');
-        }
-
         if ('function' !== typeof Array.prototype.forEach)
         {
             missingFeatures.push('Array.prototype.forEach');
