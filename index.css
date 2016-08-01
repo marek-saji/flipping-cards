@@ -5,6 +5,7 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
+
 *
 {
     box-sizing: inherit;
@@ -14,12 +15,14 @@ html
 {
     text-align: center;
 }
+
 body
 {
     display: inline-block;
     text-align: left;
     line-height: 1.5;
 }
+
 body[data-fcard-active]
 {
     overflow: hidden;
@@ -67,6 +70,7 @@ th small
 {
     font-size: 2em;
 }
+
 .kana th
 {
     font-size: 0.5em;
@@ -96,6 +100,7 @@ th small
     font-size: 1.25em;
     line-height: 1;
 }
+
 .kana__syllabogram [lang=jp-Latn]
 {
     color: #666;
@@ -129,7 +134,7 @@ th small
     transform-origin: 50%;
     overflow: hidden;
 
-    background: rgba(0,0,0,0.75);
+    background: rgba(0, 0, 0, 0.75);
 }
 
 .fcard__card__wrapper button
@@ -146,10 +151,12 @@ th small
     right: 0;
     z-index: 1;
 }
+
 .fcard__endPractice--attention
 {
     animation: pop 1s cubic-bezier(0.3, -2.3, 0.7, 3.3);
 }
+
 @keyframes pop
 {
     0%   { transform: scale(1); }
@@ -177,39 +184,45 @@ th small
     left: 50%;
     width: 100%;
     height: 100%;
-    transform: translateX(-50%) translateY(calc( -105vh - 100% ));
+    transform: translateX(-50%) translateY(calc(-105vh - 100%));
     max-width: 30em;
     max-height: 25em;
     perspective: 60em;
     transform-style: preserve-3d;
 }
+
 .fcard__card--onscreen,
 .fcard__card--wrong,
 .fcard__card--correct
 {
     transition: all 0.5s ease-in-out;
 }
+
 .fcard__card--onscreen
 {
     transition-delay: 0.3s;
     transform: translateX(-50%) translateY(-50%);
     z-index: 2;
 }
+
 .fcard__card--wrong
 {
-    transform: translateX(calc( -50vw - 40% - 100% )) translateY(-50%);
+    transform: translateX(calc(-50vw - 40% - 100%)) translateY(-50%);
 }
+
 .fcard__card--correct
 {
-    transform: translateX(calc( 50vw + 40% )) translateY(-50%);
+    transform: translateX(calc(50vw + 40%)) translateY(-50%);
 }
+
 .debug .fcard__card--wrong
 {
-    transform: translateX(calc( -25vw - 100% )) translateY(-50%);
+    transform: translateX(calc(-25vw - 100%)) translateY(-50%);
 }
+
 .debug .fcard__card--correct
 {
-    transform: translateX(calc( 25vw )) translateY(-50%);
+    transform: translateX(calc(25vw)) translateY(-50%);
 }
 
 .fcard__card__question,
@@ -236,6 +249,7 @@ th small
 {
     transform: rotateX(0deg);
 }
+
 .fcard__card__answer
 {
     transform: rotateX(360deg);
@@ -245,6 +259,7 @@ th small
 {
     transform: rotateX(180deg);
 }
+
 .fcard__card__answer--flipped
 {
     transform: rotateX(180deg);
@@ -262,11 +277,13 @@ th small
     overflow: auto;
     font-size: 1.5em;
 }
+
 .fcard__card__content--short
 {
     font-size: 4em;
     padding: 0.375em; /* 1.5 / 4 */
 }
+
 .fcard__card__content--long
 {
     align-items: flex-start;
@@ -278,10 +295,12 @@ th small
 {
     color: #666;
 }
+
 .fcard__card__disambiguation::before
 {
     content: '(';
 }
+
 .fcard__card__disambiguation::after
 {
     content: ')';
