@@ -32,6 +32,10 @@
       "**/*.html",
       "**/*.css"
     ],
+    "watchOptions": {
+        "ignoreInitial": true,
+        "ignored": ["node_modules"]
+    },
     "server": true
   },
   "eslintConfig": {
