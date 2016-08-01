@@ -71,6 +71,11 @@
             missingFeatures.push('element.classList');
         }
 
+        if (undefined === element.dataset)
+        {
+            missingFeatures.push('element.dataset');
+        }
+
         if (! supportsEmoji())
         {
             missingFeatures.push('emoji font');
