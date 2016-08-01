@@ -318,6 +318,19 @@ th small
     content: ')';
 }
 
+.fcard__card__examples
+{
+    font-size: 0.8em;
+}
+
+.fcard__card__examples::before
+{
+    content: ' ';
+    display: block;
+    margin: 1em 3em;
+    border-top: #666 solid thin;
+}
+
 .fcard__card__nav
 {
     display: flex;

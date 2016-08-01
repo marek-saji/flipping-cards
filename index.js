@@ -243,11 +243,14 @@
         var item = {
             element: element,
             languageCodes: [],
-            languages: {}
+            languages: {},
+            examples: []
         };
         var textElements = element.querySelectorAll('[lang]');
         var textElement, lang;
         var idx;
+        var exampleIds, example;
+
         for (idx = 0; idx < textElements.length; idx += 1)
         {
             textElement = textElements[idx];
@@ -258,6 +261,16 @@
                 item.languages[lang] = [];
             }
             item.languages[lang].push(textElement);
+        }
+
+        exampleIds = ( element.dataset.fcardExample || '' ).split(/ +/);
+        for (idx = 0; idx < exampleIds.length; idx += 1)
+        {
+            example = document.getElementById(exampleIds[idx]);
+            if (example)
+            {
+                item.examples.push(example);
+            }
         }
 
         return item;
@@ -297,7 +310,8 @@
             var lang = randomElement(item.languageCodes);
             return {value: {
                 question: randomElement(item.languages[lang]),
-                answer: item.element
+                answer: item.element.outerHTML,
+                examples: item.examples
             }};
         }};
     }

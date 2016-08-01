@@ -170,9 +170,9 @@
      * Setup card using item generator
      */
     FlippingCard.prototype.setupFresh = function () {
-        var questionAndAnswer = this.setItemGenerator.next().value;
-        this.setQuestion(questionAndAnswer.question);
-        this.setAnswer(questionAndAnswer.answer);
+        var item = this.setItemGenerator.next().value;
+        this.setQuestion(item.question);
+        this.setAnswer(item.answer, item.examples);
     };
 
 
@@ -199,10 +199,25 @@
      * Set answre content
      *
      * @param {Element|string} answer
+     * @param {Element[]} examples
      */
-    FlippingCard.prototype.setAnswer = function (answer) {
+    FlippingCard.prototype.setAnswer = function (answer, examples) {
+        var examplesContainer;
+        var examplesHtml;
         this.question.scrollTop = 0;
         setElementContent(this.answer, answer);
+        examplesHtml = examples
+            .map(function (example) {
+                return example.outerHTML;
+            })
+            .join('');
+        if (examplesHtml)
+        {
+            examplesContainer = document.createElement('aside');
+            examplesContainer.classList.add('fcard__card__examples');
+            examplesContainer.innerHTML = examplesHtml;
+            this.answer.appendChild(examplesContainer);
+        }
         this.answer.classList.toggle(
             'fcard__card__content--short',
             this.answer.textContent.length < CONTENT_LENGTH_LONG
