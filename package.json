@@ -22,37 +22,52 @@
   },
   "homepage": "https://github.com/marek-saji/flipping-cards#readme",
   "devDependencies": {
-    "eslint": "^3.2.0"
+    "eslint": "^3.2.0",
+    "stylelint": "^7.0.3",
+    "stylelint-config-standard": "^11.0.0"
   },
   "browser-sync": {
-      "files": ["**/*.js", "**/*.html", "**/*.css"],
-      "server": true
+    "files": [
+      "**/*.js",
+      "**/*.html",
+      "**/*.css"
+    ],
+    "server": true
   },
   "eslintConfig": {
-      "env": {
-          "browser": true
-      },
-      "globals": {
-          "FlippingCard": false
-      },
-      "extends": "eslint:recommended",
-      "rules": {
-          "indent": [
-              "error",
-              4
-          ],
-          "linebreak-style": [
-              "error",
-              "unix"
-          ],
-          "quotes": [
-              "error",
-              "single"
-          ],
-          "semi": [
-              "error",
-              "always"
-          ]
-      }
+    "env": {
+      "browser": true
+    },
+    "globals": {
+      "FlippingCard": false
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+      "indent": [
+        "error",
+        4
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ]
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "indentation": 4,
+      "max-empty-lines": 3,
+      "block-opening-brace-newline-before": "always-multi-line",
+      "block-opening-brace-space-before": null
+    }
   }
 }
