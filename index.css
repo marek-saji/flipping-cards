@@ -268,15 +268,27 @@ th small
 
 .fcard__card__content
 {
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    flex: 1 1 auto;
     padding: 1em;
     overflow: auto;
     font-size: 1.5em;
+}
+
+/**
+ * When content overflows, this has no effect and scrollbars show up,
+ * because of `overflow:auto` above.
+ * When content is shorter, this causes to act as it had
+ * `align-items:center` — elements in content keep their height, while
+ * ::before and ::after get stretched and place it on the cetner.
+ * Based on http://stackoverflow.com/a/34455253/146399
+ */
+.fcard__card__content::before,
+.fcard__card__content::after
+{
+    content: '';
+    flex: 1 1 auto;
 }
 
 .fcard__card__content--short
@@ -287,7 +299,6 @@ th small
 
 .fcard__card__content--long
 {
-    align-items: flex-start;
     text-align: left;
     text-align: initial;
 }
