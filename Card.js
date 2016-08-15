@@ -19,9 +19,10 @@
      *
      * @param {Element} container - DOM Element to append card to
      * @param {object} itemGenerator.next - Used to get next item. Must return object with `value` property.
+     * @param {object} messages
      * @constructor
      */
-    function FlippingCard (container, itemGenerator)
+    function FlippingCard (container, itemGenerator, messages)
     {
         if (! container instanceof Element)
         {
@@ -35,6 +36,8 @@
         {
             throw new TypeError('itemGenerator must be a generator');
         }
+
+        this.messages = messages;
 
 
         this.setItemGenerator = itemGenerator;
@@ -128,9 +131,9 @@
         gotItWrong.setAttribute('type', 'button');
         gotItCorrect.setAttribute('type', 'button');
 
-        revealAnswer.textContent = '↷ show answer';
-        gotItWrong.textContent = '😞 got it wrong';
-        gotItCorrect.textContent = '😃 got it correct';
+        revealAnswer.textContent = this.messages.revealAnswer;
+        gotItWrong.textContent = this.messages.gotItWrong;
+        gotItCorrect.textContent = this.messages.gotItCorrect;
 
 
 

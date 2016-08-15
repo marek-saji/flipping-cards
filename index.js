@@ -2,6 +2,22 @@
 
     'use strict';
 
+    var MESSAGES_BY_LANGUAGE = {
+        en: {
+            startPractice: 'Start practice',
+            revealAnswer: '↷ show answer',
+            gotItWrong: '😞 got it wrong',
+            gotItCorrect: '😃 got it correct',
+        },
+        pl: {
+            startPractice: 'Rozpocznij naukę',
+            revealAnswer: '↷ pokaż odpowiedź',
+            gotItWrong: '😞 nie wiedziałem',
+            gotItCorrect: '😃 wiedziałem',
+        },
+    };
+
+    var messages;
     var backdrop;
 
     /**
@@ -38,6 +54,11 @@
         if ('function' !== typeof Array.prototype.forEach)
         {
             missingFeatures.push('Array.prototype.forEach');
+        }
+
+        if ('function' !== typeof Object.keys)
+        {
+            missingFeatures.push('Object.keys');
         }
 
         if ( !global.CSS)
@@ -145,6 +166,51 @@
 
 
     /**
+     * Assign messages to {@see messages}
+     *
+     * @param {string} language
+     */
+    function setupMessages (language)
+    {
+        var idx;
+        var customMessagesSource;
+        var customMessages;
+        var languages = [
+            language,
+            language.toLowerCase(),
+            language.split(/[_-]/)[0],
+            language.split(/[_-]/)[0].toLowerCase()
+        ];
+
+        for (idx=0; idx < languages.length; idx += 1)
+        {
+            if (languages[idx] in MESSAGES_BY_LANGUAGE)
+            {
+                messages = MESSAGES_BY_LANGUAGE[languages[idx]];
+                break;
+            }
+        }
+
+        if (! messages)
+        {
+            messages = Object.keys(MESSAGES_BY_LANGUAGE)[0];
+        }
+
+        customMessagesSource = document.querySelector('[data-fcard-messages]');
+        if (customMessagesSource)
+        {
+            customMessages = JSON.parse(customMessagesSource.dataset.fcardMessages);
+            Object.keys(messages).forEach(function (messageId) {
+                if (messageId in customMessages)
+                {
+                    messages[messageId] = customMessages[messageId];
+                }
+            });
+        }
+    }
+
+
+    /**
      * Put “Start practice” button on page
      */
     function addStartPracticeButton ()
@@ -153,7 +219,7 @@
         startPracticeButton = document.createElement('button');
         startPracticeButton.setAttribute('type', 'button');
         startPracticeButton.classList.add('fcard__startPractise');
-        startPracticeButton.textContent = 'Start practice';
+        startPracticeButton.textContent = messages.startPractice;
 
         startPracticeButton.addEventListener(
             'click',
@@ -282,7 +348,7 @@
 
         for (activeCardIdx=0; activeCardIdx<cards.length; activeCardIdx += 1)
         {
-            cards[activeCardIdx] = new FlippingCard(backdrop, itemGenerator);
+            cards[activeCardIdx] = new FlippingCard(backdrop, itemGenerator, messages);
             cards[activeCardIdx].onWrongAnswer = cards[activeCardIdx].onCorrectAnswer = function () {
                 var activeCard;
                 activeCardIdx = ( activeCardIdx + 1 ) % cards.length;
@@ -320,6 +386,7 @@
 
     if (isCoolEnough())
     {
+        setupMessages(document.documentElement.lang || navigator.language);
         addStartPracticeButton();
     }
 
