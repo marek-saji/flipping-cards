@@ -8,12 +8,14 @@
             revealAnswer: '↷ show answer',
             gotItWrong: '😞 got it wrong',
             gotItCorrect: '😃 got it correct',
+            noItemsError: 'No flippin’ items found. 😞',
         },
         pl: {
             startPractice: 'Rozpocznij naukę',
             revealAnswer: '↷ pokaż odpowiedź',
             gotItWrong: '😞 nie wiedziałem',
             gotItCorrect: '😃 wiedziałem',
+            noItemsError: 'Nie znalazłem żadnych elementów do uczenia. 😞',
         },
     };
 
@@ -268,6 +270,12 @@
     function collectItems ()
     {
         var elements = document.querySelectorAll('[data-fcard-item]');
+        if (0 === elements.length)
+        {
+            alert(messages.noItemsError);
+            throw new Error(messages.noItemsError);
+        }
+
         return Array.prototype.map.call(elements, createItemFromElement);
     }
 
