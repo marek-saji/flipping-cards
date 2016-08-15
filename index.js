@@ -8,15 +8,15 @@
             revealAnswer: '↷ show answer',
             gotItWrong: '😞 got it wrong',
             gotItCorrect: '😃 got it correct',
-            noItemsError: 'No flippin’ items found. 😞',
+            noItemsError: 'No flippin’ items found. 😞'
         },
         pl: {
             startPractice: 'Rozpocznij naukę',
             revealAnswer: '↷ pokaż odpowiedź',
             gotItWrong: '😞 nie wiedziałem',
             gotItCorrect: '😃 wiedziałem',
-            noItemsError: 'Nie znalazłem żadnych elementów do uczenia. 😞',
-        },
+            noItemsError: 'Nie znalazłem żadnych elementów do uczenia. 😞'
+        }
     };
 
     var messages;
