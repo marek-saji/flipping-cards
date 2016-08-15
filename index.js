@@ -4,17 +4,17 @@
 
     var MESSAGES_BY_LANGUAGE = {
         en: {
-            startPractice: 'Start practice',
+            startPractice: 'Start prac­tice',
             revealAnswer: '↷ show answer',
             gotItWrong: '😞 got it wrong',
-            gotItCorrect: '😃 got it correct',
+            gotItCorrect: '😃 got it cor­rect',
             noItemsError: 'No flippin’ items found. 😞'
         },
         pl: {
-            startPractice: 'Rozpocznij naukę',
-            revealAnswer: '↷ pokaż odpowiedź',
-            gotItWrong: '😞 nie wiedziałem',
-            gotItCorrect: '😃 wiedziałem',
+            startPractice: 'Rozpo­cznij naukę',
+            revealAnswer: '↷ pokaż odpo­wiedź',
+            gotItWrong: '😞 nie wie­działem',
+            gotItCorrect: '😃 wie­działem',
             noItemsError: 'Nie znalazłem żadnych elementów do uczenia. 😞'
         }
     };
