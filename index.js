@@ -244,7 +244,8 @@
             element: element,
             languageCodes: [],
             languages: {},
-            examples: []
+            examples: [],
+            tags: []
         };
         var textElements = element.querySelectorAll('[lang]');
         var textElement, lang;
@@ -272,6 +273,8 @@
                 item.examples.push(example);
             }
         }
+
+        item.tags = ( element.dataset.fcardTags || '' ).split(/ +/);
 
         return item;
     }
@@ -311,7 +314,8 @@
             return {value: {
                 question: randomElement(item.languages[lang]),
                 answer: item.element.outerHTML,
-                examples: item.examples
+                examples: item.examples,
+                tags: item.tags
             }};
         }};
     }
