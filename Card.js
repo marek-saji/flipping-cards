@@ -171,19 +171,20 @@
      */
     FlippingCard.prototype.setupFresh = function () {
         var item = this.setItemGenerator.next().value;
-        this.setQuestion(item.question);
-        this.setAnswer(item.answer, item.examples);
+        this.setQuestion(item);
+        this.setAnswer(item);
     };
 
 
     /**
      * Set question content
      *
-     * @param {Element|string} question
+     * @param {Object} item
+     * @param {string} item.question
      */
-    FlippingCard.prototype.setQuestion = function (question) {
+    FlippingCard.prototype.setQuestion = function (item) {
         this.question.scrollTop = 0;
-        setElementContent(this.question, question);
+        setElementContent(this.question, item.question);
         this.question.classList.toggle(
             'fcard__card__content--short',
             this.question.textContent.length < CONTENT_LENGTH_SHORT
@@ -198,25 +199,29 @@
     /**
      * Set answre content
      *
-     * @param {Element|string} answer
-     * @param {Element[]} examples
+     * @param {Object} item
+     * @param {string} item.answer
+     * @param {[Element[]]} item.examples
      */
-    FlippingCard.prototype.setAnswer = function (answer, examples) {
+    FlippingCard.prototype.setAnswer = function (item) {
         var examplesContainer;
         var examplesHtml;
         this.question.scrollTop = 0;
-        setElementContent(this.answer, answer);
-        examplesHtml = examples
-            .map(function (example) {
-                return example.outerHTML;
-            })
-            .join('');
-        if (examplesHtml)
+        setElementContent(this.answer, item.answer);
+        if (item.examples)
         {
-            examplesContainer = document.createElement('aside');
-            examplesContainer.classList.add('fcard__card__examples');
-            examplesContainer.innerHTML = examplesHtml;
-            this.answer.appendChild(examplesContainer);
+            examplesHtml = item.examples
+                .map(function (example) {
+                    return example.outerHTML;
+                })
+                .join('');
+            if (examplesHtml)
+            {
+                examplesContainer = document.createElement('aside');
+                examplesContainer.classList.add('fcard__card__examples');
+                examplesContainer.innerHTML = examplesHtml;
+                this.answer.appendChild(examplesContainer);
+            }
         }
         this.answer.classList.toggle(
             'fcard__card__content--short',
