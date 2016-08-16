@@ -313,6 +313,15 @@ th small
     text-align: initial;
 }
 
+/**
+ * Reset margin, if question is a element of the list
+ */
+.fcard__card__content > *
+{
+    margin: 0;
+    padding: 0;
+}
+
 .fcard__card__disambiguation
 {
     color: #666;
