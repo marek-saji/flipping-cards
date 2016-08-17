@@ -10,12 +10,6 @@
 
 /*** General ***/
 
-:root
-{
-    box-sizing: border-box;
-    font-family: sans-serif;
-}
-
 *
 {
     box-sizing: inherit;
@@ -23,6 +17,8 @@
 
 html
 {
+    box-sizing: border-box;
+    font: 1.25em/1.5 sans-serif;
     text-align: center;
 }
 
@@ -30,12 +26,18 @@ body
 {
     display: inline-block;
     text-align: left;
-    line-height: 1.5;
 }
 
 body[data-fcard-active]
 {
     overflow: hidden;
+}
+
+
+
+rt
+{
+    font-size: 70%;
 }
 
 
