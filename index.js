@@ -29,7 +29,7 @@
      */
     function debug ()
     {
-        return -1 !== global.location.hash.indexOf('debug');
+        return -1 !== global.location.search.indexOf('debug');
     }
 
     /**
