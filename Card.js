@@ -24,14 +24,14 @@
      */
     function FlippingCard (container, itemGenerator, messages)
     {
-        if (! container instanceof Element)
+        if (!(container instanceof Element))
         {
             throw new TypeError('contaier must be a DOM Element');
         }
 
         if (
-            ! itemGenerator instanceof Object ||
-            ! itemGenerator.next instanceof Function
+            !(itemGenerator instanceof Object) ||
+            !(itemGenerator.next instanceof Function)
         )
         {
             throw new TypeError('itemGenerator must be a generator');
@@ -57,7 +57,7 @@
     {
         var disambiguation;
 
-        if (! element instanceof Element)
+        if (!(element instanceof Element))
         {
             throw new TypeError('element must be a DOM Element');
         }
@@ -91,7 +91,7 @@
      */
     FlippingCard.prototype.prepareDom = function (container) {
 
-        if (! container instanceof Element)
+        if (!(container instanceof Element))
         {
             throw new TypeError('contaier must be a DOM Element');
         }

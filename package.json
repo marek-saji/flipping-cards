@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/marek-saji/flipping-cards#readme",
   "devDependencies": {
-    "eslint": "^3.2.0",
+    "eslint": ">=4.18.2",
     "stylelint": "^7.0.3",
     "stylelint-config-standard": "^11.0.0"
   },
@@ -33,8 +33,10 @@
       "**/*.css"
     ],
     "watchOptions": {
-        "ignoreInitial": true,
-        "ignored": ["node_modules"]
+      "ignoreInitial": true,
+      "ignored": [
+        "node_modules"
+      ]
     },
     "server": true
   },
