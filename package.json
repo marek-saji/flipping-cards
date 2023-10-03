@@ -23,7 +23,7 @@
   "homepage": "https://github.com/marek-saji/flipping-cards#readme",
   "devDependencies": {
     "eslint": ">=4.18.2",
-    "stylelint": "^7.0.3",
+    "stylelint": "^15.10.3",
     "stylelint-config-standard": "^11.0.0"
   },
   "browser-sync": {
