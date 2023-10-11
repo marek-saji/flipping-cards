@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "postinstall": "rm -rf .git/hooks; ln -sfn ../hooks .git/"
+    "postinstall": "rm -rf .git/hooks; ln -sfn ../hooks .git/",
+    "dev": "npx @11ty/eleventy-dev-server"
   },
   "repository": {
     "type": "git",
